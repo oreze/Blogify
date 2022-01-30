@@ -1,3 +1,4 @@
+using Blogify.Configuration;
 using Blogify.Domain.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -18,4 +19,5 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+DatabaseExtensions.ConfigureDatabase(app);
 app.Run();
