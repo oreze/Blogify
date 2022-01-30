@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new() { Title = "Blogify", Version = "v1" }); });
+builder.Services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new() { Title = "Blogify.Api", Version = "v1" }); });
 
 var app = builder.Build();
 
@@ -13,7 +13,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blogify v1"));
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blogify.Api v1"));
 }
 
 app.UseHttpsRedirection();

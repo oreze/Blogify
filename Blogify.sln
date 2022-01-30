@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogify", "Blogify\Blogify.csproj", "{B66373E4-CC04-42E4-8196-C165EECEF09B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogify.Api", "Blogify.Api\Blogify.Api.csproj", "{B66373E4-CC04-42E4-8196-C165EECEF09B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogify.Domain", "Blogify.Domain\Blogify.Domain.csproj", "{3464A6F2-2C07-4367-8115-7413542E6066}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,9 @@ Global
 		{B66373E4-CC04-42E4-8196-C165EECEF09B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B66373E4-CC04-42E4-8196-C165EECEF09B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B66373E4-CC04-42E4-8196-C165EECEF09B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3464A6F2-2C07-4367-8115-7413542E6066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3464A6F2-2C07-4367-8115-7413542E6066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3464A6F2-2C07-4367-8115-7413542E6066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3464A6F2-2C07-4367-8115-7413542E6066}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
