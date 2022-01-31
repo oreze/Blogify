@@ -1,0 +1,30 @@
+﻿version: '3.8'
+
+services:
+
+  web:
+    container_name: 'blogify'
+    image: 'aspnetcoreapp'
+    build:
+      context: .
+      dockerfile: Blogify.Api/Dockerfile
+    ports:
+      - "5006:5006"
+    depends_on:
+      - "postgres"
+    networks:
+      - aspnetcoreapp-network
+
+  postgres:
+    container_name: 'postgres'
+    image: postgres:14.1
+    environment:
+      # change this for a "real" app!
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - aspnetcoreapp-network
+
+networks:
+  aspnetcoreapp-network:
+    driver: bridge
