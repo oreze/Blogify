@@ -52,7 +52,8 @@ public class PostsRepository: IPostsRepository
 
     public async Task<Post> GetByIdAsync(Guid id)
     {
-        return await _context.Posts.FirstOrDefaultAsync(post => post.Id == id);    }
+        return await _context.Posts.FirstOrDefaultAsync(post => post.Id == id);    
+    }
 
     public async Task InsertAsync(Post entity)
     {
