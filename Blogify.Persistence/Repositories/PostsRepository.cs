@@ -31,12 +31,7 @@ public class PostsRepository: IPostsRepository
         _context.Add(entity);
         _context.SaveChanges();
     }
-
-    public void Update(Post entity)
-    {
-        throw new NotImplementedException();
-    }
-
+    
     public void Delete(Guid id)
     {
         var foundItem = _context.Posts.FirstOrDefault(post => post.Id == id);
@@ -64,12 +59,7 @@ public class PostsRepository: IPostsRepository
         await _context.AddAsync(entity);
         await _context.SaveChangesAsync();    
     }
-
-    public async Task UpdateAsync(Post entity)
-    {
-        throw new NotImplementedException();
-    }
-
+    
     public async Task DeleteAsync(Guid id)
     {
         var foundItem = await _context.Posts.FirstOrDefaultAsync(post => post.Id == id);

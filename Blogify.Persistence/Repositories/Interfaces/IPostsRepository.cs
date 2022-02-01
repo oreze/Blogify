@@ -2,6 +2,6 @@
 
 namespace Blogify.Persistence.Repositories;
 
-public interface IPostsRepository: IBasicRepository<Post>
+public interface IPostsRepository: IBasicRepository<Post, Guid>
 {
 }
