@@ -13,6 +13,6 @@ public class ServicesConfiguration
             options.UseNpgsql(connectionString));
 
         app.Services.AddScoped<IPostsRepository, PostsRepository>();
-        app.Services.AddScoped<IUsersRepository, IUsersRepository>();
+        app.Services.AddScoped<IUsersRepository, UsersRepository>();
     }
 }
