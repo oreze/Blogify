@@ -19,6 +19,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Blogify.Domain\Blogify.Domain.csproj" />
+      <ProjectReference Include="..\Blogify.Persistence\Blogify.Persistence.csproj" />
     </ItemGroup>
 
 </Project>
