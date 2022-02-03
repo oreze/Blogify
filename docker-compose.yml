@@ -22,6 +22,8 @@ services:
       # change this for a "real" app!
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5438:5432'
     networks:
       - aspnetcoreapp-network
 
