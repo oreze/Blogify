@@ -1,4 +1,5 @@
-﻿using Blogify.Domain.Entities;
+﻿using Blogify.Domain.AggregationModels.Post;
+using Blogify.Domain.Entities;
 
 namespace Blogify.Persistence.Repositories;
 

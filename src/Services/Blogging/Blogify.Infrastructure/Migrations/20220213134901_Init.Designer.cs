@@ -3,26 +3,28 @@ using System;
 using Blogify.Domain.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Blogify.Domain.Migrations
+namespace Blogify.Persistence.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    partial class BlogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220213134901_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("ProductVersion", "6.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Blogify.Domain.Entities.Post", b =>
+            modelBuilder.Entity("Blogify.Domain.AggregationModels.Post.Post", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,9 +43,6 @@ namespace Blogify.Domain.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("LastUpdatedAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Subject")
                         .IsRequired()
@@ -89,7 +88,7 @@ namespace Blogify.Domain.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Blogify.Domain.Entities.Post", b =>
+            modelBuilder.Entity("Blogify.Domain.AggregationModels.Post.Post", b =>
                 {
                     b.HasOne("Blogify.Domain.Entities.User", "Author")
                         .WithMany()
