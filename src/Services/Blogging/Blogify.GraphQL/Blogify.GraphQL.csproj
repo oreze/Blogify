@@ -13,6 +13,11 @@
 
     <ItemGroup>
       <PackageReference Include="HotChocolate.AspNetCore" Version="12.6.0" />
+      <PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.6.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Queries\Posts" />
     </ItemGroup>
 
 </Project>

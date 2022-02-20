@@ -12,6 +12,7 @@ public class Post
 
     public DateTime CreatedAt { get; private set; }
     private DateTime LastUpdatedAt { get; set; }
+    public long AuthorId { get; }
     public User Author { get; private set; }
 
     public static Post NewPost(string subject, string description, string content, User author)
@@ -39,6 +40,7 @@ public class Post
         Description = description;
         Content = content;
         CreatedAt = createdAt;
+        AuthorId = author.Id;
         Author = author;
     }
 
@@ -58,6 +60,7 @@ public class Post
         Content = content;
         CreatedAt = createdAt;
         Author = author;
+        AuthorId = author.Id;
     }
 
     public void UpdateData(string? newSubject, string? newDescription, string? newContent)

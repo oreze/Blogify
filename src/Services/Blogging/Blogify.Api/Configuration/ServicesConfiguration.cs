@@ -1,5 +1,7 @@
-﻿using Blogify.Domain.Data;
+﻿using Blogify.Domain.AggregationModels.Post;
+using Blogify.Domain.Data;
 using Blogify.GraphQL.Configuration;
+using Blogify.GraphQL.Groups.Posts;
 using Blogify.GraphQL.Queries;
 using Blogify.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,8 +18,9 @@ public class ServicesConfiguration
 
         app.Services
             .AddGraphQLServer()
-            .AddQueryType<RootQuery>();
-
+            .AddQueryType<RootQuery>()
+            .AddType<PostType>();
+            
         app.Services.AddErrorFilter<GraphQLErrorFilter>();
 
         app.Services.AddScoped<IPostsRepository, PostsRepository>();
