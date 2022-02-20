@@ -18,6 +18,8 @@ if (app.Environment.IsDevelopment())
 {
 }
 
+app.MapGraphQL();
+
 app.UseHttpsRedirection();
 
 DatabaseExtensions.ConfigureDatabase(app);

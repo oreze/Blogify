@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogify.Domain", "src\Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogify.Infrastructure", "src\Services\Blogging\Blogify.Infrastructure\Blogify.Infrastructure.csproj", "{ECE8476C-809D-49D7-A8CD-DEE13424D49A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogify.GraphQL", "src\Services\Blogging\Blogify.GraphQL\Blogify.GraphQL.csproj", "{2F8E1068-B7E4-4A02-A117-04998E1F3B83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{ECE8476C-809D-49D7-A8CD-DEE13424D49A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECE8476C-809D-49D7-A8CD-DEE13424D49A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECE8476C-809D-49D7-A8CD-DEE13424D49A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F8E1068-B7E4-4A02-A117-04998E1F3B83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F8E1068-B7E4-4A02-A117-04998E1F3B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F8E1068-B7E4-4A02-A117-04998E1F3B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F8E1068-B7E4-4A02-A117-04998E1F3B83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
