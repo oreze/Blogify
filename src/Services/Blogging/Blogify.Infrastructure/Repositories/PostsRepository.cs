@@ -1,4 +1,5 @@
-﻿using Blogify.Domain.Data;
+﻿using Blogify.Domain.AggregationModels.Post;
+using Blogify.Domain.Data;
 using Blogify.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
