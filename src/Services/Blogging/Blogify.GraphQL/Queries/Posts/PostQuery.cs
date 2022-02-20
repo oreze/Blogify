@@ -9,4 +9,7 @@ public class PostQuery
 {
     public async Task<IEnumerable<Post>> GetPosts([Service] IPostsRepository postsRepository, PaginationInput input) =>
         await postsRepository.GetAllAsync(input.Page, input.PageSize);
+
+    public async Task<Post> Post([Service] IPostsRepository postsRepository, Guid id) =>
+        await postsRepository.GetByIdAsync(id);
 }

@@ -1,4 +1,5 @@
 ﻿using Blogify.Domain.Data;
+using Blogify.GraphQL.Configuration;
 using Blogify.GraphQL.Queries;
 using Blogify.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,9 @@ public class ServicesConfiguration
             .AddGraphQLServer()
             .AddQueryType<RootQuery>();
 
-            app.Services.AddScoped<IPostsRepository, PostsRepository>();
+        app.Services.AddErrorFilter<GraphQLErrorFilter>();
+
+        app.Services.AddScoped<IPostsRepository, PostsRepository>();
         app.Services.AddScoped<IUsersRepository, UsersRepository>();
     }
 }
