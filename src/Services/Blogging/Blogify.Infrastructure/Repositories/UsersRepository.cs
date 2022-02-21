@@ -7,16 +7,17 @@ namespace Blogify.Persistence.Repositories;
 
 public class UsersRepository: IUsersRepository
 {
-    private readonly BlogDbContext _context;
+    private readonly IDbContextFactory<BlogDbContext> _contextFactory;
 
-    public UsersRepository(BlogDbContext context)
+    public UsersRepository(IDbContextFactory<BlogDbContext> contextFactory)
     {
-        _context = context;
+        _contextFactory = contextFactory;
     }
 
     public IEnumerable<User> GetAll(int page, int pageSize)
     {
-        return _context.Users
+        using var context = _contextFactory.CreateDbContext();
+        return context.Users
             .Skip(page * pageSize)
             .Take(pageSize)
             .ToList();
@@ -24,28 +25,32 @@ public class UsersRepository: IUsersRepository
 
     public User GetById(long id)
     {
-        return _context.Users.FirstOrDefault(post => post.Id == id);
+        using var context = _contextFactory.CreateDbContext();
+        return context.Users.FirstOrDefault(post => post.Id == id);
     }
 
     public void Insert(User entity)
     {
-        _context.Add(entity);
-        _context.SaveChanges();
+        using var context = _contextFactory.CreateDbContext();
+        context.Add(entity);
+        context.SaveChanges();
     }
 
     public void Delete(long id)
     {
-        var foundItem = _context.Users.FirstOrDefault(post => post.Id == id);
+        using var context = _contextFactory.CreateDbContext();
+        var foundItem = context.Users.FirstOrDefault(post => post.Id == id);
         if (foundItem != null)
         {
-            _context.Users.Remove(foundItem);
-            _context.SaveChanges();
+            context.Users.Remove(foundItem);
+            context.SaveChanges();
         }
     }
 
     public async Task<IEnumerable<User>> GetAllAsync(int page, int pageSize)
     {
-        return await _context.Users
+        using var context = await _contextFactory.CreateDbContextAsync();
+        return await context.Users
             .Skip(page * pageSize)
             .Take(pageSize)
             .ToListAsync();
@@ -53,22 +58,25 @@ public class UsersRepository: IUsersRepository
 
     public async Task<User> GetByIdAsync(long id)
     {
-        return await _context.Users.FirstOrDefaultAsync(post => post.Id == id);   
+        using var context = await _contextFactory.CreateDbContextAsync();
+        return await context.Users.FirstOrDefaultAsync(post => post.Id == id);   
     }
 
     public async Task InsertAsync(User entity)
     {
-        await _context.AddAsync(entity);
-        await _context.SaveChangesAsync();    
+        using var context = await _contextFactory.CreateDbContextAsync();
+        await context.AddAsync(entity);
+        await context.SaveChangesAsync();    
     }
 
     public async Task DeleteAsync(long id)
     {
-        var foundItem = await _context.Users.FirstOrDefaultAsync(post => post.Id == id);
+        using var context = await _contextFactory.CreateDbContextAsync();
+        var foundItem = await context.Users.FirstOrDefaultAsync(post => post.Id == id);
         if (foundItem != null)
         {
-            _context.Users.Remove(foundItem);
-            await _context.SaveChangesAsync();
+            context.Users.Remove(foundItem);
+            await context.SaveChangesAsync();
         }
     }
 }

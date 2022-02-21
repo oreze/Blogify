@@ -7,16 +7,17 @@ namespace Blogify.Persistence.Repositories;
 
 public class PostsRepository: IPostsRepository
 {
-    private readonly BlogDbContext _context;
+    private readonly IDbContextFactory<BlogDbContext> _contextFactory;
 
-    public PostsRepository(BlogDbContext context)
+    public PostsRepository(IDbContextFactory<BlogDbContext> contextFactory)
     {
-        _context = context;
+        _contextFactory = contextFactory;
     }
 
     public IEnumerable<Post> GetAll(int page, int pageSize)
     {
-        return _context.Posts
+        using var context = _contextFactory.CreateDbContext();
+        return context.Posts
             .Skip(page * pageSize)
             .Take(pageSize)
             .ToList();
@@ -24,28 +25,32 @@ public class PostsRepository: IPostsRepository
 
     public Post GetById(Guid id)
     {
-        return _context.Posts.FirstOrDefault(post => post.Id == id);
+        using var context = _contextFactory.CreateDbContext();
+        return context.Posts.FirstOrDefault(post => post.Id == id);
     }
 
     public void Insert(Post entity)
     {
-        _context.Add(entity);
-        _context.SaveChanges();
+        using var context = _contextFactory.CreateDbContext();
+        context.Add(entity);
+        context.SaveChanges();
     }
     
     public void Delete(Guid id)
     {
-        var foundItem = _context.Posts.FirstOrDefault(post => post.Id == id);
+        using var context = _contextFactory.CreateDbContext();
+        var foundItem = context.Posts.FirstOrDefault(post => post.Id == id);
         if (foundItem != null)
         {
-            _context.Posts.Remove(foundItem);
-            _context.SaveChanges();
+            context.Posts.Remove(foundItem);
+            context.SaveChanges();
         }
     }
 
     public async Task<IEnumerable<Post>> GetAllAsync(int page, int pageSize)
     {
-        return await _context.Posts
+        using var context = await _contextFactory.CreateDbContextAsync();
+        return await context.Posts
             .Skip(page * pageSize)
             .Take(pageSize)
             .ToListAsync();
@@ -53,22 +58,25 @@ public class PostsRepository: IPostsRepository
 
     public async Task<Post> GetByIdAsync(Guid id)
     {
-        return await _context.Posts.FirstOrDefaultAsync(post => post.Id == id);    
+        using var context = await _contextFactory.CreateDbContextAsync();
+        return await context.Posts.FirstOrDefaultAsync(post => post.Id == id);    
     }
 
     public async Task InsertAsync(Post entity)
     {
-        await _context.AddAsync(entity);
-        await _context.SaveChangesAsync();    
+        using var context = await _contextFactory.CreateDbContextAsync();
+        await context.AddAsync(entity);
+        await context.SaveChangesAsync();    
     }
     
     public async Task DeleteAsync(Guid id)
     {
-        var foundItem = await _context.Posts.FirstOrDefaultAsync(post => post.Id == id);
+        using var context = await _contextFactory.CreateDbContextAsync();
+        var foundItem = await context.Posts.FirstOrDefaultAsync(post => post.Id == id);
         if (foundItem != null)
         {
-            _context.Posts.Remove(foundItem);
-            await _context.SaveChangesAsync();
+            context.Posts.Remove(foundItem);
+            await context.SaveChangesAsync();
         }
     }
 }

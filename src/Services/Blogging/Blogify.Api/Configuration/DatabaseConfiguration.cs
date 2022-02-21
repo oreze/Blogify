@@ -17,7 +17,7 @@ public class DatabaseExtensions
         {
             var services = scope.ServiceProvider;
 
-            var context = services.GetRequiredService<BlogDbContext>();
+            var context = services.GetRequiredService<IDbContextFactory<BlogDbContext>>().CreateDbContext();
             if (context.Database.GetPendingMigrations().Any())
             {
                 context.Database.Migrate();

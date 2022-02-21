@@ -13,13 +13,14 @@ public class ServicesConfiguration
     public static void ConfigureServices(ref WebApplicationBuilder app)
     {
         var connectionString = app.Configuration.GetConnectionString("BlogDb");
-        app.Services.AddDbContext<BlogDbContext>(options =>
+        app.Services.AddPooledDbContextFactory<BlogDbContext>(options =>
             options.UseNpgsql(connectionString));
 
         app.Services
             .AddGraphQLServer()
             .AddQueryType<RootQuery>()
-            .AddType<PostType>();
+            .AddType<PostType>()
+            .RegisterDbContext<BlogDbContext>();
             
         app.Services.AddErrorFilter<GraphQLErrorFilter>();
 

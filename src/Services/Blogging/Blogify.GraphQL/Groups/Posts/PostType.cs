@@ -1,4 +1,5 @@
 ﻿using Blogify.Domain.AggregationModels.Post;
+using Blogify.Domain.Data;
 using Blogify.Domain.Entities;
 using Blogify.GraphQL.Resolvers.Posts;
 using Blogify.Persistence.Repositories;
