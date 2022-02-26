@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Blogify.Domain\Blogify.Domain.csproj" />
+      <ProjectReference Include="..\Blogify.Infrastructure\Blogify.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="HotChocolate.AspNetCore" Version="12.6.0" />
+      <PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.6.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Queries\Posts" />
+    </ItemGroup>
+
+</Project>

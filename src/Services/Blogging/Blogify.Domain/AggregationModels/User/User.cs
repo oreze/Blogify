@@ -1,4 +1,6 @@
-﻿namespace Blogify.Domain.Entities;
+﻿using Blogify.Domain.AggregationModels.Post;
+
+namespace Blogify.Domain.Entities;
 
 public class User
 {
@@ -8,4 +10,5 @@ public class User
     public string Username { get; set; }
     public string Password { get; private set; }
     public string Email { get; set; }
+    public IList<Post> Posts { get; set; }
 }

@@ -1,4 +1,8 @@
-﻿using Blogify.Domain.Data;
+﻿using Blogify.Domain.AggregationModels.Post;
+using Blogify.Domain.Data;
+using Blogify.GraphQL.Configuration;
+using Blogify.GraphQL.Groups.Posts;
+using Blogify.GraphQL.Queries;
 using Blogify.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,8 +13,16 @@ public class ServicesConfiguration
     public static void ConfigureServices(ref WebApplicationBuilder app)
     {
         var connectionString = app.Configuration.GetConnectionString("BlogDb");
-        app.Services.AddDbContext<BlogDbContext>(options =>
+        app.Services.AddPooledDbContextFactory<BlogDbContext>(options =>
             options.UseNpgsql(connectionString));
+
+        app.Services
+            .AddGraphQLServer()
+            .AddQueryType<RootQuery>()
+            .AddType<PostType>()
+            .RegisterDbContext<BlogDbContext>();
+            
+        app.Services.AddErrorFilter<GraphQLErrorFilter>();
 
         app.Services.AddScoped<IPostsRepository, PostsRepository>();
         app.Services.AddScoped<IUsersRepository, UsersRepository>();

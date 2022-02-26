@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Blogify.Persistence.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20220213134901_Init")]
+    [Migration("20220220155501_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,12 +91,17 @@ namespace Blogify.Persistence.Migrations
             modelBuilder.Entity("Blogify.Domain.AggregationModels.Post.Post", b =>
                 {
                     b.HasOne("Blogify.Domain.Entities.User", "Author")
-                        .WithMany()
+                        .WithMany("Posts")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Author");
+                });
+
+            modelBuilder.Entity("Blogify.Domain.Entities.User", b =>
+                {
+                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }

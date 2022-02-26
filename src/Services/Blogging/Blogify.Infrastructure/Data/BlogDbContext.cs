@@ -13,4 +13,12 @@ public class BlogDbContext: DbContext
     public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options)
     {
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Post>()
+            .HasOne(p => p.Author)
+            .WithMany(u => u.Posts)
+            .HasForeignKey(p => p.AuthorId);
+    }
 }
