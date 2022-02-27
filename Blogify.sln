@@ -1,12 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogify.Api", "src\Services\Blogging\Blogify.Api\Blogify.Api.csproj", "{A5F87C4D-82F4-46AB-B4E8-919D14D9B3DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogging.Api", "src\Services\Blogging\Blogging.Api\Blogging.Api.csproj", "{A5F87C4D-82F4-46AB-B4E8-919D14D9B3DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogify.Domain", "src\Services\Blogging\Blogify.Domain\Blogify.Domain.csproj", "{4CD94B94-2E40-4379-922D-60E7E7B587D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogging.Domain", "src\Services\Blogging\Blogging.Domain\Blogging.Domain.csproj", "{4CD94B94-2E40-4379-922D-60E7E7B587D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogify.Infrastructure", "src\Services\Blogging\Blogify.Infrastructure\Blogify.Infrastructure.csproj", "{ECE8476C-809D-49D7-A8CD-DEE13424D49A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogging.Infrastructure", "src\Services\Blogging\Blogging.Infrastructure\Blogging.Infrastructure.csproj", "{ECE8476C-809D-49D7-A8CD-DEE13424D49A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogify.GraphQL", "src\Services\Blogging\Blogify.GraphQL\Blogify.GraphQL.csproj", "{2F8E1068-B7E4-4A02-A117-04998E1F3B83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogging.GraphQL", "src\Services\Blogging\Blogging.GraphQL\Blogging.GraphQL.csproj", "{2F8E1068-B7E4-4A02-A117-04998E1F3B83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Domain", "src\Services\Identity\Identity.Domain\Identity.Domain.csproj", "{75828A63-C13B-4C3F-9EFA-E7CCAC4C7211}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Infrastructure", "src\Services\Identity\Identity.Infrastructure\Identity.Infrastructure.csproj", "{D4E98A30-5588-443D-B2A9-0B7FEE4EF438}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Api", "src\Services\Identity\Identity.Api\Identity.Api.csproj", "{1ED5EA39-832D-4B4A-99DB-772DE6EC60D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +36,17 @@ Global
 		{2F8E1068-B7E4-4A02-A117-04998E1F3B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F8E1068-B7E4-4A02-A117-04998E1F3B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F8E1068-B7E4-4A02-A117-04998E1F3B83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75828A63-C13B-4C3F-9EFA-E7CCAC4C7211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75828A63-C13B-4C3F-9EFA-E7CCAC4C7211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75828A63-C13B-4C3F-9EFA-E7CCAC4C7211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75828A63-C13B-4C3F-9EFA-E7CCAC4C7211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4E98A30-5588-443D-B2A9-0B7FEE4EF438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4E98A30-5588-443D-B2A9-0B7FEE4EF438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4E98A30-5588-443D-B2A9-0B7FEE4EF438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4E98A30-5588-443D-B2A9-0B7FEE4EF438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ED5EA39-832D-4B4A-99DB-772DE6EC60D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED5EA39-832D-4B4A-99DB-772DE6EC60D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED5EA39-832D-4B4A-99DB-772DE6EC60D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED5EA39-832D-4B4A-99DB-772DE6EC60D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

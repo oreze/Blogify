@@ -18,9 +18,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Blogify.Domain\Blogify.Domain.csproj" />
-      <ProjectReference Include="..\Blogify.GraphQL\Blogify.GraphQL.csproj" />
-      <ProjectReference Include="..\Blogify.Infrastructure\Blogify.Infrastructure.csproj" />
+      <ProjectReference Include="..\Blogging.Domain\Blogging.Domain.csproj" />
+      <ProjectReference Include="..\Blogging.GraphQL\Blogging.GraphQL.csproj" />
+      <ProjectReference Include="..\Blogging.Infrastructure\Blogging.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

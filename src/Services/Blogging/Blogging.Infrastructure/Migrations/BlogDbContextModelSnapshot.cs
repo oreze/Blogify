@@ -3,7 +3,6 @@ using System;
 using Blogify.Domain.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,10 +11,9 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Blogify.Persistence.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20220220155501_Init")]
-    partial class Init
+    partial class BlogDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +22,7 @@ namespace Blogify.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Blogify.Domain.AggregationModels.Post.Post", b =>
+            modelBuilder.Entity("Blogging.Domain.AggregationModels.Post.Post", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +53,7 @@ namespace Blogify.Persistence.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("Blogify.Domain.Entities.User", b =>
+            modelBuilder.Entity("Blogging.Domain.Entities.User", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,9 +86,9 @@ namespace Blogify.Persistence.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Blogify.Domain.AggregationModels.Post.Post", b =>
+            modelBuilder.Entity("Blogging.Domain.AggregationModels.Post.Post", b =>
                 {
-                    b.HasOne("Blogify.Domain.Entities.User", "Author")
+                    b.HasOne("Blogging.Domain.Entities.User", "Author")
                         .WithMany("Posts")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -99,7 +97,7 @@ namespace Blogify.Persistence.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("Blogify.Domain.Entities.User", b =>
+            modelBuilder.Entity("Blogging.Domain.Entities.User", b =>
                 {
                     b.Navigation("Posts");
                 });

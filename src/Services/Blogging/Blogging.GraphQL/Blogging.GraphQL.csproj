@@ -4,11 +4,12 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>Blogify.GraphQL</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Blogify.Domain\Blogify.Domain.csproj" />
-      <ProjectReference Include="..\Blogify.Infrastructure\Blogify.Infrastructure.csproj" />
+      <ProjectReference Include="..\Blogging.Domain\Blogging.Domain.csproj" />
+      <ProjectReference Include="..\Blogging.Infrastructure\Blogging.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
