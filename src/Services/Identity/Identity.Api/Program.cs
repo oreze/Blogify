@@ -1,6 +1,7 @@
 using System.Dynamic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Identity.Api.Configuration;
 using Identity.Domain.AggregationModels.ApplicationUser.ValueObjects;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,5 +29,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// user config
+app.ConfigureDatabase();
 
 app.Run();
