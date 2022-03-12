@@ -14,7 +14,7 @@ public class ApplicationUser: IdentityUser
     [Required]
     public string State { get; protected set; }
     [Required]
-    public string Country { get; protected set; }
+    public CountryInfo Country { get; protected set; }
     [Required]
     public string ZipCode { get; protected set; }
     [Required]
@@ -36,7 +36,7 @@ public class ApplicationUser: IdentityUser
     /// </summary>
     protected ApplicationUser() {}
 
-    public ApplicationUser(string street, string city, string state, string country, string zipCode, string name,
+    public ApplicationUser(string street, string city, string state, CountryInfo country, string zipCode, string name,
         string lastName)
     {
         Street = street ?? throw new ArgumentNullException(nameof(street));

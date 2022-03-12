@@ -29,21 +29,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapGet("/", async () =>
-{
-    var client = new HttpClient();
-
-    var response = await client.GetAsync("https://api.first.org/data/v1/countries");
-
-    var responseString = await response.Content.ReadAsStringAsync();
-
-    var customObject = JsonSerializer.Deserialize<ExpandoObject>(responseString);
-    var node = customObject.Where(v => v.Key == "data");
-    var val = (JsonElement)node.Select(x => x.Value).FirstOrDefault();
-    var deserialized = JsonSerializer.Deserialize<CountryInfo>(val).ToString();
-    
-    var x = "KEKW";
-
-});
-
 app.Run();
