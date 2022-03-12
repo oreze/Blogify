@@ -1,5 +1,4 @@
 ﻿using Blogify.Domain.Entities;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 namespace Blogify.Domain.AggregationModels.Post;
 

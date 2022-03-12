@@ -4,10 +4,14 @@ namespace Identity.Domain.AggregationModels.ApplicationUser.ValueObjects;
 
 public sealed class CountryInfo
 {
-    [JsonPropertyName("country")]
+    public int Id { get; private set; }
     public string ISO { get; private set; }
     public string Name { get; private set; }
 
+    /// <summary>
+    /// For Entity Framework purposes
+    /// </summary>
+    protected CountryInfo() {}
     public CountryInfo(string country, string region)
     {
         ISO = country ?? throw new ArgumentException(nameof(country));

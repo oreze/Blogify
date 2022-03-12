@@ -2,12 +2,12 @@
 
 services:
 
-  web:
-    container_name: 'blogify'
+  blogify.blogging:
+    container_name: 'Blogify.Blogging'
     image: 'aspnetcoreapp'
     build:
       context: .
-      dockerfile: Blogify.Api/Dockerfile
+      dockerfile: src\Services\Blogging\Blogging.Api/Dockerfile
     ports:
       - "5006:5006"
     depends_on:
@@ -15,8 +15,8 @@ services:
     networks:
       - aspnetcoreapp-network
 
-  postgres:
-    container_name: 'postgres'
+  blogging.db:
+    container_name: 'Blogging.DB'
     image: postgres:14.1
     environment:
       # change this for a "real" app!
@@ -24,6 +24,31 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - '5438:5432'
+    networks:
+      - aspnetcoreapp-network
+
+  blogify.identity:
+    container_name: 'Blogify.Identity'
+    image: 'aspnetcoreapp'
+    build:
+      context: .
+      dockerfile: src\Services\Blogging\Blogging.Api/Dockerfile
+    ports:
+      - "5007:5006"
+    depends_on:
+      - "postgres"
+    networks:
+      - aspnetcoreapp-network
+
+  identity.db:
+    container_name: 'Identity.DB'
+    image: postgres:14.1
+    environment:
+      # change this for a "real" app!
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5439:5432'
     networks:
       - aspnetcoreapp-network
 

@@ -5,10 +5,9 @@ namespace Identity.Api.Configuration;
 
 public static class DatabaseConfiguration
 {
-        public static IApplicationBuilder ConfigureDatabase(this WebApplication app)
+        public static void ConfigureDatabase(this WebApplication app)
         {
             ApplyMigrations(app);
-            return app;
         }
     
         private static void ApplyMigrations(WebApplication app)

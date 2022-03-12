@@ -5,10 +5,9 @@ namespace Blogify.Configuration;
 
 public class DatabaseExtensions
 {
-    public static IApplicationBuilder ConfigureDatabase(WebApplication app)
+    public static void ConfigureDatabase(WebApplication app)
     {
         ApplyMigrations(app);
-        return app;
     }
 
     private static void ApplyMigrations(WebApplication app)

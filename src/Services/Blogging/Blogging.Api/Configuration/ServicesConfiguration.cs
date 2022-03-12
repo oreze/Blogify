@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Blogify.Configuration;
 
-public class ServicesConfiguration
+public static class ServicesConfiguration
 {
-    public static void ConfigureServices(ref WebApplicationBuilder app)
+    public static void ConfigureServices(this WebApplicationBuilder app)
     {
         var connectionString = app.Configuration.GetConnectionString("BlogDb");
         app.Services.AddPooledDbContextFactory<BlogDbContext>(options =>

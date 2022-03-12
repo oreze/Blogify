@@ -7,9 +7,8 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-ServicesConfiguration.ConfigureServices(ref builder);
+// configure services by user.
+builder.ConfigureServices();
 
 var app = builder.Build();
 
