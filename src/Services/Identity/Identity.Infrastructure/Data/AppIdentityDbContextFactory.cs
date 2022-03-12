@@ -8,7 +8,7 @@ public class AppIdentityDbContextFactory: IDesignTimeDbContextFactory<AppIdentit
     public AppIdentityDbContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<AppIdentityDbContext>()
-            .UseNpgsql("Host=localhost;Port=5439;Database=postgres;Username=postgres;Password=postgres");
+            .UseNpgsql("Host=identitydb;Port=5432;Database=postgres;Username=postgres;Password=postgres");
         return new AppIdentityDbContext(optionsBuilder.Options);
     }
 }

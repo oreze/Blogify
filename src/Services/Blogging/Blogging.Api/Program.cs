@@ -1,3 +1,4 @@
+using Blogging.Configuration;
 using Blogify.Configuration;
 using Blogify.Domain.Data;
 using Blogify.Domain.Entities;
@@ -21,5 +22,5 @@ app.MapGraphQL();
 
 app.UseHttpsRedirection();
 
-DatabaseExtensions.ConfigureDatabase(app);
+app.ConfigureDatabase();
 app.Run();

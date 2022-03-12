@@ -8,7 +8,7 @@ public class BlogDbContextDesignFactory: IDesignTimeDbContextFactory<BlogDbConte
     public BlogDbContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<BlogDbContext>()
-            .UseNpgsql("Host=localhost;Port=5438;Database=postgres;Username=postgres;Password=postgres");
+            .UseNpgsql("Host=bloggingdb;Port=5432;Database=postgres;Username=postgres;Password=postgres");
         return new BlogDbContext(optionsBuilder.Options);
     }
     

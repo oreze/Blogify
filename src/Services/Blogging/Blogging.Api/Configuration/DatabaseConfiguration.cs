@@ -1,11 +1,11 @@
 ﻿using Blogify.Domain.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blogify.Configuration;
+namespace Blogging.Configuration;
 
-public class DatabaseExtensions
+public static class DatabaseConfiguration
 {
-    public static void ConfigureDatabase(WebApplication app)
+    public static void ConfigureDatabase(this WebApplication app)
     {
         ApplyMigrations(app);
     }

@@ -4,17 +4,26 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["src/Services/Identity/Identity.Api/Identity.Api.csproj", "Identity.Api/"]
-RUN dotnet restore "src/Services/Identity/Identity.Api/Identity.Api.csproj"
+
+COPY "Blogify.sln" "Blogify.sln"
+
+COPY "src/Services/Blogging/Blogging.Api/Blogging.Api.csproj" "src/Services/Blogging/Blogging.Api/Blogging.Api.csproj"
+COPY "src/Services/Blogging/Blogging.Domain/Blogging.Domain.csproj" "src/Services/Blogging/Blogging.Domain/Blogging.Domain.csproj"
+COPY "src/Services/Blogging/Blogging.GraphQL/Blogging.GraphQL.csproj" "src/Services/Blogging/Blogging.GraphQL/Blogging.GraphQL.csproj"
+COPY "src/Services/Blogging/Blogging.Infrastructure/Blogging.Infrastructure.csproj" "src/Services/Blogging/Blogging.Infrastructure/Blogging.Infrastructure.csproj"
+COPY "src/Services/Identity/Identity.Api/Identity.Api.csproj" "src/Services/Identity/Identity.Api/Identity.Api.csproj"
+COPY "src/Services/Identity/Identity.Domain/Identity.Domain.csproj" "src/Services/Identity/Identity.Domain/Identity.Domain.csproj"
+COPY "src/Services/Identity/Identity.Infrastructure/Identity.Infrastructure.csproj" "src/Services/Identity/Identity.Infrastructure/Identity.Infrastructure.csproj"
+
+RUN dotnet restore "Blogify.sln"
+
 COPY . .
-WORKDIR "/src/Identity.Api"
-RUN dotnet build "Identity.Api.csproj" -c Release -o /app/build
+WORKDIR /src/Services/Identity/Identity.Api
+RUN dotnet build && dotnet publish --no-restore -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "Identity.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "Identity.Api.dll"]
