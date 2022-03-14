@@ -1,0 +1,55 @@
+﻿version: '3.8'
+
+services:
+  bloggingdb:
+    container_name: 'bloggingdb'
+    image: postgres:14.1
+    environment:
+      # change this for a "real" app!
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5438:5432'
+    networks:
+      - blogging
+
+  identitydb:
+    container_name: 'identitydb'
+    image: postgres:14.1
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5439:5432'
+    networks:
+      - blogging
+
+  blogifyBlogging:
+    container_name: 'Blogify.Blogging'
+    image: 'blogify.blogging'
+    build:
+      context: .
+      dockerfile: src/Services/Blogging/Blogging.Api/Dockerfile
+    ports:
+      - "5006:5006"
+    depends_on:
+      - "bloggingdb"
+    networks:
+      - blogging
+
+  blogifyIdentity:
+    container_name: 'Blogify.Identity'
+    image: 'blogify.identity'
+    build:
+      context: .
+      dockerfile: src/Services/Identity/Identity.Api/Dockerfile
+    ports:
+      - "5007:5006"
+    depends_on:
+      - "identitydb"
+    networks:
+      - blogging
+
+networks:
+  blogging:
+    driver: bridge
