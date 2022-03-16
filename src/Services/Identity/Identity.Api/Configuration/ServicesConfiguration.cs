@@ -5,10 +5,12 @@ namespace Identity.Api.Configuration;
 
 public static class ServicesConfiguration
 {
-    public static void ConfigureServices(this WebApplicationBuilder app)
+    public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder app)
     {
         var connectionString = app.Configuration.GetConnectionString("IdentityDb");
         app.Services.AddPooledDbContextFactory<AppIdentityDbContext>(options =>
             options.UseNpgsql(connectionString));
+
+        return app;
     }
 }

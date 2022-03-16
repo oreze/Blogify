@@ -1,0 +1,29 @@
+﻿version: '3.8'
+
+services:
+  bloggingdb:
+    container_name: 'bloggingdb'
+    image: postgres:14.1
+    environment:
+      # change this for a "real" app!
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5438:5432'
+    networks:
+      - blogging
+
+  identitydb:
+    container_name: 'identitydb'
+    image: postgres:14.1
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5439:5432'
+    networks:
+      - blogging
+
+networks:
+  blogging:
+    driver: bridge

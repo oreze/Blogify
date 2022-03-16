@@ -9,11 +9,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddAuthorization();
+// // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.ConfigureServices();
+builder
+    .ConfigureServices()
+    .ConfigureIdentity();
 
 var app = builder.Build();
 
@@ -28,6 +31,8 @@ app.UsePathBase("/basepath");
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseIdentityServer();
+
 app.UseAuthorization();
 
 app.MapControllers();

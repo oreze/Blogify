@@ -1,9 +1,15 @@
 using IdentityServer4.Models;
 
-namespace Identity.Api.Configuration;
+namespace Identity.Api.Configuration.Identity;
 
-public static class IdentityConfig
+public class IdentityAuthConfig
 {
+    public static IEnumerable<IdentityResource> IdentityResources =>
+        new IdentityResource[]
+        { 
+            new IdentityResources.OpenId()
+        };
+    
     public static IEnumerable<ApiScope> ApiScopes =>
         new List<ApiScope>
         {
